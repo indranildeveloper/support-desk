@@ -1,11 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
-
+import colors from "colors";
+import connectDB from "./config/db";
 import errorHandler from "./middleware/errorMiddleware";
 // Routes
 import userRoutes from "./routes/userRoutes";
 
 dotenv.config();
+
+// Connect to Mongodb
+connectDB();
 
 const app = express();
 
