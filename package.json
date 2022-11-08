@@ -7,7 +7,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node -r esm server/server.js",
-    "server": "nodemon -r esm server/server.js"
+    "server": "nodemon -r esm server/server.js",
+    "client": "yarn --cwd client start",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
