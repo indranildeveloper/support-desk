@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
+import Loading from "../components/Loading";
+import { register, reset } from "../features/auth/authSlice";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +19,25 @@ const Register = () => {
   });
 
   const { name, email, password, confirmPassword } = formData;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    // Redirect when logged in
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    dispatch(reset);
+  }, [isError, isSuccess, user, message, navigate, dispatch]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -32,8 +55,20 @@ const Register = () => {
 
     if (password !== confirmPassword) {
       toast.error("Passwords do not match!");
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      };
+
+      dispatch(register(userData));
     }
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <Card className="p-4 mx-auto auth-card">
@@ -52,7 +87,6 @@ const Register = () => {
             <Form.Control
               type="text"
               placeholder="Enter your name"
-              id="name"
               name="name"
               value={name}
               onChange={(e) => handleChange(e)}
@@ -63,7 +97,6 @@ const Register = () => {
             <Form.Control
               type="email"
               placeholder="Enter your email"
-              id="email"
               name="email"
               value={email}
               onChange={(e) => handleChange(e)}
@@ -74,7 +107,6 @@ const Register = () => {
             <Form.Control
               type="password"
               placeholder="Enter password"
-              id="password"
               name="password"
               value={password}
               onChange={(e) => handleChange(e)}
@@ -85,7 +117,6 @@ const Register = () => {
             <Form.Control
               type="password"
               placeholder="Confirm Password"
-              id="confirmPassword"
               name="confirmPassword"
               value={confirmPassword}
               onChange={(e) => handleChange(e)}

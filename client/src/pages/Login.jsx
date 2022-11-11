@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
+import Loading from "../components/Loading";
+import { login, reset } from "../features/auth/authSlice";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +17,25 @@ const Login = () => {
   });
 
   const { email, password } = formData;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    // Redirect when logged in
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    dispatch(reset);
+  }, [isError, isSuccess, user, message, navigate, dispatch]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -27,7 +50,14 @@ const Login = () => {
     if (!email || !password) {
       toast.error("Please fill up all the fields!");
     }
+
+    const userData = { email, password };
+    dispatch(login(userData));
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <Card className="p-4 mx-auto auth-card">
@@ -44,7 +74,6 @@ const Login = () => {
             <Form.Control
               type="email"
               placeholder="Enter your email"
-              id="email"
               name="email"
               value={email}
               onChange={(e) => handleChange(e)}
@@ -55,7 +84,6 @@ const Login = () => {
             <Form.Control
               type="password"
               placeholder="Enter password"
-              id="password"
               name="password"
               value={password}
               onChange={(e) => handleChange(e)}
