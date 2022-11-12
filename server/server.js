@@ -5,6 +5,7 @@ import connectDB from "./config/db";
 import errorHandler from "./middleware/errorMiddleware";
 // Routes
 import userRoutes from "./routes/userRoutes";
+import ticketRoutes from "./routes/ticketRoutes";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use("/api/users", userRoutes);
+app.use("/api/users", ticketRoutes);
 
 // Error Handler
 app.use(errorHandler);
