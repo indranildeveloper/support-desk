@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use("/api/users", userRoutes);
-app.use("/api/users", ticketRoutes);
+app.use("/api/tickets", ticketRoutes);
 
 // Error Handler
 app.use(errorHandler);
