@@ -47,7 +47,7 @@ const NewTicket = () => {
   return (
     <>
       <BackButton url={"/"} />
-      <div className="auth-card mx-auto auth-card">
+      <div className="auth-card mx-auto auth-card mb-4">
         <section id="heading" className="text-center">
           <h1 className="d-flex align-items-center justify-content-center display-6 fw-bold gap-2">
             Create New Ticket

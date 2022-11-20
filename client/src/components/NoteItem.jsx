@@ -5,12 +5,12 @@ const NoteItem = ({ note }) => {
 
   return (
     <div
-      className={`${
-        note.isStaff ? "bg-primary" : "bg-secondary"
-      } text-white px-3 py-2 rounded shadow-sm mb-4`}
+      className={`${note.isStaff ? "bg-primary" : "bg-light"} ${
+        note.isStaff ? "text-white" : "text-dark"
+      } p-3 shadow-sm mb-4`}
     >
       <div className="d-flex justify-content-between">
-        <h4>
+        <h4 className={`${note.isStaff ? "text-white" : "text-dark"}`}>
           Note from{" "}
           {note.isStaff ? <span>Staff</span> : <span>{user.name}</span>}
         </h4>

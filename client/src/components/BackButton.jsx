@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 const BackButton = ({ url }) => {
   return (
     <LinkContainer to={url} className="mb-4">
-      <Button variant="secondary">
+      <Button variant="primary">
         <FaArrowLeft /> Go Back
       </Button>
     </LinkContainer>

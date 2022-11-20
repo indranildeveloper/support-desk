@@ -29,7 +29,7 @@ const Tickets = () => {
   }
 
   return (
-    <>
+    <div className="mb-5">
       <BackButton url={"/"} />
       <h1>Tickets</h1>
 
@@ -48,7 +48,7 @@ const Tickets = () => {
           ))}
         </tbody>
       </Table>
-    </>
+    </div>
   );
 };
 

@@ -82,7 +82,7 @@ const Ticket = () => {
   }
 
   return (
-    <>
+    <div className="mb-4">
       <div>
         <header className="mb-4">
           <BackButton url={"/tickets"} />
@@ -107,7 +107,7 @@ const Ticket = () => {
           </h3>
           <h3>Product: {ticket.product}</h3>
           <hr />
-          <div className="border p-2 bg-light rounded shadow-sm">
+          <div className="border p-3 bg-light shadow-sm">
             <h3>Description of Issue:</h3>
             <p>{ticket.description}</p>
           </div>
@@ -173,7 +173,7 @@ const Ticket = () => {
         </Modal.Footer>
       </Modal>
       {/* End Modal */}
-    </>
+    </div>
   );
 };
 

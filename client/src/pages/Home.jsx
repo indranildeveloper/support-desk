@@ -5,7 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 const Home = () => {
   return (
-    <div className="auth-card mx-auto">
+    <div className="auth-card mx-auto mb-4">
       <section id="heading" className="text-center">
         <h1 className="d-flex align-items-center justify-content-center display-6 fw-bold gap-2">
           What do you need help with?
@@ -21,7 +21,7 @@ const Home = () => {
           </Button>
         </LinkContainer>
         <LinkContainer to="/tickets">
-          <Button variant="secondary">
+          <Button variant="success">
             <FaTicketAlt /> See all tickets
           </Button>
         </LinkContainer>

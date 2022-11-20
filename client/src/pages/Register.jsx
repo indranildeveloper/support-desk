@@ -71,7 +71,7 @@ const Register = () => {
   }
 
   return (
-    <Card className="p-4 mx-auto auth-card">
+    <Card className="p-4 mx-auto auth-card mb-4">
       <section id="heading" className="text-center">
         <h1 className="d-flex align-items-center justify-content-center display-6 fw-bold gap-2">
           <FaUser /> Register

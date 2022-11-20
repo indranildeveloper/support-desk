@@ -60,7 +60,7 @@ const Login = () => {
   }
 
   return (
-    <Card className="p-4 mx-auto auth-card">
+    <Card className="p-4 mx-auto mb-4 auth-card">
       <section id="heading" className="text-center">
         <h1 className="d-flex align-items-center justify-content-center display-6 fw-bold gap-2">
           <FaSignInAlt /> Log In
