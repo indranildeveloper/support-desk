@@ -9,6 +9,8 @@ import ticketRoutes from "./routes/ticketRoutes";
 
 dotenv.config();
 
+console.log("From server")
+
 // Connect to Mongodb
 connectDB();
 
