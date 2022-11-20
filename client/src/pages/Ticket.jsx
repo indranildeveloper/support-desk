@@ -18,7 +18,7 @@ const Ticket = () => {
   const { ticketId } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { ticket, isLoading, isSuccess, isError, message } = useSelector(
+  const { ticket, isLoading, isError, message } = useSelector(
     (state) => state.ticket
   );
 
