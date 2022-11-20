@@ -22,7 +22,7 @@ const Home = () => {
         </LinkContainer>
         <LinkContainer to="/tickets">
           <Button variant="secondary">
-            <FaTicketAlt /> Create new ticket
+            <FaTicketAlt /> See all tickets
           </Button>
         </LinkContainer>
       </Stack>
